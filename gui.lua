@@ -192,37 +192,36 @@ end;
 function Library:AddToolTip(InfoStr, HoverInstance)
     local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
     local Tooltip = Library:Create('Frame', {
-        BackgroundColor3 = Colour3.fromRGB(255,255,255),
-        BorderSizePixel = 0,
+        BackgroundColor3 = Library.MainColor,
+        BorderColor3 = Library.OutlineColor,
 
-        Size = UDim2.fromOffset(X + 12, Y + 10),
+        Size = UDim2.fromOffset(X + 5, Y + 4),
         ZIndex = 100,
         Parent = Library.ScreenGui,
 
         Visible = false,
     })
 
-     Library:Create('UICorner', {
-        CornerRadius = UDim.new(0, 6), 
-        Parent = Tooltip
-    })
-
     local Label = Library:CreateLabel({
-        Position = UDim2.fromOffset(6, 5), 
+        Position = UDim2.fromOffset(3, 1),
         Size = UDim2.fromOffset(X, Y);
         TextSize = 14;
         Text = InfoStr,
-        
-        TextColor3 = Color3.fromRGB(30, 30, 30), 
+        TextColor3 = Library.FontColor,
         TextXAlignment = Enum.TextXAlignment.Left;
         ZIndex = Tooltip.ZIndex + 1,
 
         Parent = Tooltip;
     });
 
-    
+    Library:AddToRegistry(Tooltip, {
+        BackgroundColor3 = 'MainColor';
+        BorderColor3 = 'OutlineColor';
+    });
 
-    
+    Library:AddToRegistry(Label, {
+        TextColor3 = 'FontColor',
+    });
 
     local IsHovering = false
 
