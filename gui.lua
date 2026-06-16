@@ -220,14 +220,9 @@ function Library:AddToolTip(InfoStr, HoverInstance)
         Parent = Tooltip;
     });
 
-    Library:AddToRegistry(Tooltip, {
-        BackgroundColor3 = 'MainColor';
-        BorderColor3 = 'OutlineColor';
-    });
+    
 
-    Library:AddToRegistry(Label, {
-        TextColor3 = 'FontColor',
-    });
+    
 
     local IsHovering = false
 
